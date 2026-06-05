@@ -165,7 +165,9 @@ button { cursor: pointer; }
   width: auto;
   display: block;
   object-fit: contain;
-  /* JPG has white bg which matches the white header perfectly */
+  /* mix-blend-mode: multiply で白背景を透過処理 —
+     白(#fff) × ヘッダー白 = 白なので、ロゴマークだけが残る */
+  mix-blend-mode: multiply;
 }
 
 /* Footer logo (SVG variant keeps .logo-wrap + .logo-svg) */
@@ -722,6 +724,20 @@ textarea { resize: vertical; min-height: 130px; }
 }
 
 @media (max-width: 480px) {
-  .props-grid  { grid-template-columns: 1fr; }
-  .hero-btns   { flex-direction: column; }
+  .props-grid { grid-template-columns: 1fr; }
+
+  /* ヒーローボタン：横並び維持・コンパクトサイズ */
+  .hero-btns {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  .hero-btns .btn-primary,
+  .hero-btns .btn-secondary {
+    padding: 11px 18px;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    flex: 1;
+    justify-content: center;
+  }
 }
