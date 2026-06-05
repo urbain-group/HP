@@ -227,12 +227,54 @@ function initContactForm() {
   });
 }
 
-/* ── Back to top ── */
+/* ── Back to top (with scroll-progress ring) ── */
 function initBackToTop() {
-  const btn = document.getElementById('backToTop');
-  if (!btn) return;
-  window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 500), { passive: true });
-  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  const wrap = document.getElementById('bttWrap');
+  const btn  = document.getElementById('backToTop');
+  const prog = document.getElementById('bttProg');
+  if (!wrap || !btn) return;
+
+  // Ring geometry: r=24 → circumference = 2π×24 ≈ 150.796
+  const CIRCUM = 2 * Math.PI * 24;
+  let hideTimer = null;
+  let isVisible = false;
+
+  function updateRing() {
+    if (!prog) return;
+    const scrolled  = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio     = maxScroll > 0 ? Math.min(scrolled / maxScroll, 1) : 0;
+    prog.style.strokeDashoffset = CIRCUM * (1 - ratio);
+  }
+
+  function show() {
+    if (isVisible) return;
+    isVisible = true;
+    clearTimeout(hideTimer);
+    wrap.classList.remove('hiding');
+    wrap.classList.add('visible');
+  }
+
+  function hide() {
+    if (!isVisible) return;
+    isVisible = false;
+    wrap.classList.remove('visible');
+    wrap.classList.add('hiding');
+    // アニメーション終了後に hiding クラスを除去
+    hideTimer = setTimeout(() => wrap.classList.remove('hiding'), 400);
+  }
+
+  window.addEventListener('scroll', () => {
+    updateRing();
+    if (window.scrollY > 400) { show(); } else { hide(); }
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 初期化
+  updateRing();
 }
 
 /* ── Smooth scroll (offset for fixed header) ── */

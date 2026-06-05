@@ -16,95 +16,10 @@
   <header id="header">
     <nav class="nav-container">
       <a href="#" class="logo-link">
-        <div class="logo-wrap">
-          <!--
-            Logo mark: city skyline + bird in flight + bronze arc
-            ViewBox 260×160 — precise recreation of the urbain logo
-          -->
-          <svg class="logo-svg" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" aria-label="urbain logo">
-            <!-- ── Bronze sweep arc ── -->
-            <path d="M 18,100 C 28,55 90,18 195,50"
-                  fill="none" stroke="#B8864E" stroke-width="3"
-                  stroke-linecap="round"/>
-
-            <!-- ── Buildings (base y=105, ground at y=108) ── -->
-            <!-- B1: narrow, dark navy -->
-            <rect x="20"  y="83"  width="9"  height="22" fill="#253562"/>
-            <!-- B2: tallest, darkest navy -->
-            <rect x="31"  y="58"  width="13" height="47" fill="#1B2A4A"/>
-            <!-- B3: medium, steel blue -->
-            <rect x="46"  y="70"  width="10" height="35" fill="#3D6090"/>
-            <!-- B4: bronze/copper highlight building -->
-            <rect x="58"  y="76"  width="8"  height="29" fill="#B8864E"/>
-            <!-- B5: tall, dark navy -->
-            <rect x="68"  y="64"  width="11" height="41" fill="#1B2A4A"/>
-            <!-- B6: medium, medium blue -->
-            <rect x="81"  y="74"  width="9"  height="31" fill="#2C4A7A"/>
-            <!-- B7: shorter, slate blue -->
-            <rect x="92"  y="82"  width="8"  height="23" fill="#4A6FA5"/>
-            <!-- B8: short, dark -->
-            <rect x="102" y="88"  width="7"  height="17" fill="#2C3E6B"/>
-
-            <!-- ── Ground sweep curve ── -->
-            <path d="M 16,110 C 38,104 70,107 110,110"
-                  fill="none" stroke="#1B2A4A" stroke-width="1.8" stroke-linecap="round"/>
-
-            <!-- ── Bird in flight (upper-right quadrant) ── -->
-            <!-- Bird is a heron/large bird soaring to the upper-right -->
-
-            <!-- Upper trailing wing — sweeps up and back-left -->
-            <path d="M 152,62
-                     C 148,50 143,36 132,28
-                     C 134,30 138,36 142,46
-                     C 146,53 150,59 152,62 Z"
-                  fill="#1B2A4A"/>
-            <!-- Upper trailing wing — lighter inner layer -->
-            <path d="M 152,62
-                     C 148,52 144,42 137,33
-                     C 140,38 145,50 152,62 Z"
-                  fill="#2C4A7A"/>
-
-            <!-- Forward upper wing — sweeps toward bird's head -->
-            <path d="M 152,62
-                     C 160,50 172,42 186,44
-                     C 178,50 164,58 152,62 Z"
-                  fill="#1B2A4A"/>
-            <!-- Forward upper wing — lighter inner layer -->
-            <path d="M 152,62
-                     C 158,53 168,46 180,46
-                     C 173,52 162,58 152,62 Z"
-                  fill="#3D6090"/>
-
-            <!-- Main body — streamlined, flying right -->
-            <path d="M 152,62
-                     C 164,58 180,57 198,50
-                     C 188,62 170,66 152,62 Z"
-                  fill="#1B2A4A"/>
-
-            <!-- Lower forward wing — droops forward-downward -->
-            <path d="M 152,62
-                     C 158,70 167,76 178,74
-                     C 170,69 160,65 152,62 Z"
-                  fill="#253562"/>
-
-            <!-- Neck and head — pointing forward-right -->
-            <path d="M 198,50
-                     C 206,44 216,40 222,36
-                     C 216,40 208,46 198,50 Z"
-                  fill="#1B2A4A"/>
-            <!-- Beak tip -->
-            <path d="M 218,38 C 222,36 228,35 230,32 C 226,34 221,37 218,38 Z"
-                  fill="#1B2A4A"/>
-
-            <!-- Small tail feathers at back of body -->
-            <path d="M 152,62
-                     C 148,65 143,68 138,66
-                     C 142,65 148,63 152,62 Z"
-                  fill="#2C3E6B"/>
-          </svg>
-
-          <span class="logo-text">urbain</span>
-        </div>
+        <!-- 実ロゴ画像を使用（target/S__28139536.jpg） -->
+        <img src="target/S__28139536.jpg"
+             alt="株式会社アーベイン"
+             class="logo-img">
       </a>
 
       <button class="hamburger" id="hamburger" aria-label="メニュー">
@@ -558,9 +473,32 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop" aria-label="トップへ戻る">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M5 15l7-7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
+  <!-- ===== BACK TO TOP ===== -->
+  <div class="btt-wrap" id="bttWrap" aria-hidden="true">
+    <button class="btt-btn" id="backToTop" aria-label="ページトップへ戻る">
+      <!-- スクロール進捗リング -->
+      <svg class="btt-ring" viewBox="0 0 56 56" fill="none">
+        <circle class="btt-ring-track" cx="28" cy="28" r="24"
+                stroke="rgba(184,134,78,.2)" stroke-width="2.5"/>
+        <circle class="btt-ring-prog" id="bttProg" cx="28" cy="28" r="24"
+                stroke="#B8864E" stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-dasharray="150.796"
+                stroke-dashoffset="150.796"
+                transform="rotate(-90 28 28)"/>
+      </svg>
+      <!-- 矢印アイコン -->
+      <span class="btt-icon">
+        <svg viewBox="0 0 20 20" fill="none">
+          <path d="M10 15V5M10 5L5 10M10 5l5 5"
+                stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <!-- TOP ラベル -->
+      <span class="btt-label">TOP</span>
+    </button>
+  </div>
 
   <script src="main.js"></script>
 </body>
