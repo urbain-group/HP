@@ -959,8 +959,7 @@ nav a:hover::after { transform: scaleX(1); }
   /* --- About --- */
   #about { padding: 64px 5vw; }
   .about-inner { gap: 28px; }
-  .about-image { max-width: 230px; margin: 0 auto; }
-  .about-image img { aspect-ratio: 1 / 1; }
+  .about-image { max-width: 250px; margin: 0 auto; }
   .about-text h2 { font-size: 2rem; }
   .about-data { grid-template-columns: 1fr 1fr; gap: 12px; }
   .about-awards li { font-size: 0.78rem; }
