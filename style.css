@@ -333,7 +333,9 @@ nav a:hover::after { transform: scaleX(1); }
   overflow: hidden;
   border-radius: var(--radius);
   background: #ffffff;
-  padding: 6%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .gallery-item.hidden { display: none; }
 
@@ -341,17 +343,22 @@ nav a:hover::after { transform: scaleX(1); }
   position: relative;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .gallery-thumb img {
-  width: 100%;
-  height: 100%;
+  max-width: 84%;
+  max-height: 84%;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  filter: drop-shadow(2px 3px 7px rgba(0,0,0,0.20));
+  filter: drop-shadow(0 1px 6px rgba(0,0,0,0.16));
   transition: transform 0.6s ease, filter 0.4s ease;
 }
 .gallery-item:hover .gallery-thumb img {
   transform: scale(1.05);
-  filter: drop-shadow(2px 3px 7px rgba(0,0,0,0.20)) brightness(0.72);
+  filter: drop-shadow(0 1px 6px rgba(0,0,0,0.16)) brightness(0.72);
 }
 
 .gallery-overlay {
